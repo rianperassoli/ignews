@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { SubscribeButton } from '../components/SubscribeButton'
 import { stripe } from '../services/stripe'
@@ -39,7 +39,7 @@ export default function Home({ product }: HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   /**
    * CRIAR ARQUIVO .env.local NA RAIZ DA APLICACAO COM OS VALORES ABAIXO
    * 
@@ -56,6 +56,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 
   return {
-    props: { product }
+    props: { product },
+    revalidate: 60 * 60 * 24 //24h
   }
 }
