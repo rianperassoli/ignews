@@ -40,11 +40,6 @@ export default function Home({ product }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  /**
-   * CRIAR ARQUIVO .env.local NA RAIZ DA APLICACAO COM OS VALORES ABAIXO
-   * 
-   * STRIPE_API_KEY=sk_test_51J5f15Fqd745Cz5XrkoShkjzrr9cOXvZk7irt1Tzy8gjwKOzBzQ6cuWtCByCcdock7VmtJYAsc55pyLkT9MwUVvT00jCvA3q63
-   */
   const price = await stripe.prices.retrieve('price_1J5f4lFqd745Cz5XH0vc5HNj')
 
   const product = {
